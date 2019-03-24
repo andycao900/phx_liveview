@@ -1,0 +1,28 @@
+<h1>Listing Makes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for make <- @makes do %>
+    <tr>
+      <td><%= make.name %></td>
+      <td><%= make.slug %></td>
+
+      <td>
+        <%= link "Show", to: Routes.make_path(@conn, :show, make) %>
+        <%= link "Edit", to: Routes.make_path(@conn, :edit, make) %>
+        <%= link "Delete", to: Routes.make_path(@conn, :delete, make), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Make", to: Routes.make_path(@conn, :new) %></span>
